@@ -56,8 +56,8 @@ public Employee addEmployee(Employee employee) {
 }
 
 @Override
-public Employee updateEmployee(int employeeld, Employee employee) {
-    Employee existingEmployee = employeeList.get(employeeId);
+public Employee updateEmployee(int employeeld, Employee employee) { // should be int employeeId
+    Employee existingEmployee = employeeList.get(employeeId); // should be employeeId
     
     if(existingEmployee == null) {
         throw new ResponseStatusException(HttpStatus.NOT_FOUND);
