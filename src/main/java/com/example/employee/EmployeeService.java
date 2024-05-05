@@ -56,7 +56,7 @@ public Employee addEmployee(Employee employee) {
 }
 
 @Override
-public Employee updateEmployee(int employeeld, Employee employee) { // should be int employeeId
+public Employee updateEmployee(int employeeId, Employee employee) { // should be int employeeId
     Employee existingEmployee = employeeList.get(employeeId); // should be employeeId
     
     if(existingEmployee == null) {
