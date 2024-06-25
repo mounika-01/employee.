@@ -27,71 +27,73 @@ public class EmployeeService implements EmployeeRepository {
     // Do not modify the above code
 
     // Write your code here
-    
-int uniqueId = 7;
 
-@Override
-    public ArrayList<Employee> getEmployees() { 
+    int uniqueId = 7;
+
+    @Override
+    public ArrayList<Employee> getEmployees() {
         Collection<Employee> employeeCollection = employeeList.values();
         ArrayList<Employee> employees = new ArrayList<>(employeeCollection);
 
         return employees;
     }
-    @Override 
+
+    @Override
     public Employee getEmployeeById(int employeeId) {
-         Employee employee = employeeList.get(employeeId);
-         
-         if (employee == null) {
+        Employee employee = employeeList.get(employeeId);
+
+        if (employee == null) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND);
         }
         return employee;
     }
+
     @Override
-public Employee addEmployee(Employee employee) {
-    employee.setEmployeeId(uniqueId);
-    employeeList.put(uniqueId, employee);
+    public Employee addEmployee(Employee employee) {
+        employee.setEmployeeId(uniqueId);
+        employeeList.put(uniqueId, employee);
 
-    uniqueId +=1;
-    return employee;
-}
-
-@Override
-public Employee updateEmployee(int employeeId, Employee employee) { // should be int employeeId
-    Employee existingEmployee = employeeList.get(employeeId); // should be employeeId
-    
-    if(existingEmployee == null) {
-        throw new ResponseStatusException(HttpStatus.NOT_FOUND);
-
-}
-
-if (employee.getEmployeeName() != null) {
-    existingEmployee.setEmployeeName(employee.getEmployeeName());
-
-}
-
-if (employee.getEmail() != null) {
-    existingEmployee.setEmail(employee.getEmail());
-
-}
-
-if (employee.getDepartment() != null) {
-    existingEmployee.setDepartment(employee.getDepartment());
-}
-
-return existingEmployee;
-}
-
-@Override
-
-public void deleteEmployee(int employeeId) {
-    Employee employee = employeeList.get(employeeId); 
-    
-    if (employee == null) {
-        throw new ResponseStatusException(HttpStatus.NOT_FOUND);
-
-    } else {
-        employeeList.remove(employeeId); 
-        throw new ResponseStatusException(HttpStatus.NO_CONTENT);
+        uniqueId += 1;
+        return employee;
     }
-}
+
+    @Override
+    public Employee updateEmployee(int employeeId, Employee employee) { // should be int employeeId
+        Employee existingEmployee = employeeList.get(employeeId); // should be employeeId
+
+        if (existingEmployee == null) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+
+        }
+
+        if (employee.getEmployeeName() != null) {
+            existingEmployee.setEmployeeName(employee.getEmployeeName());
+
+        }
+
+        if (employee.getEmail() != null) {
+            existingEmployee.setEmail(employee.getEmail());
+
+        }
+
+        if (employee.getDepartment() != null) {
+            existingEmployee.setDepartment(employee.getDepartment());
+        }
+
+        return existingEmployee;
+    }
+
+    @Override
+
+    public void deleteEmployee(int employeeId) {
+        Employee employee = employeeList.get(employeeId);
+
+        if (employee == null) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+
+        } else {
+            employeeList.remove(employeeId);
+            throw new ResponseStatusException(HttpStatus.NO_CONTENT);
+        }
+    }
 }
