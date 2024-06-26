@@ -28,10 +28,12 @@ public class EmployeeController {
         return employeeService.addEmployee(employee);
     }
 
-    @PutMapping("/employees/{employeeId}")
-    public Employee updateEmployee(@PathVariable("employeeId") int employeeId, @RequestBody Employee employee) {
-        return employeeService.updateEmployee(employeeId, employee); // should be employeeId
-    }
+   @PutMapping("/employees/{employeeId}")
+
+
+public Employee updateEmployee(@PathVariable("employeeId") int employeeId, @RequestBody Employee employee ) {
+    return employeeService.updateEmployee(employeeId, employee);
+}﻿
 
     @DeleteMapping("/employees/{employeeId}")
 
