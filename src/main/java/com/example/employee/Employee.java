@@ -19,11 +19,6 @@ public class Employee {
 
 
 }
-
-
-public int getEmployeeId() {
-    return employeeId;
-}
     public int getEmployeeId() {
 
         return employeeId;
